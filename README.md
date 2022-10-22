@@ -17,7 +17,7 @@ Cloud Firestore informacion sobre latitud y longitud, lo muestra y tambien lo gu
 
 #
 ### Screenshots
-<img src="https://github.com/lordsizzo/Android_GMapsAPIKotlin/blob/master/Screenshot_20220204-160145_Android%20GMapsAPI%20Kotlin.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Android_GMapsAPIKotlin/blob/master/Screenshot_20220204-160153_Android%20GMapsAPI%20Kotlin.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Android_GMapsAPIKotlin/blob/master/Screenshot_20220204-160852_Android%20GMapsAPI%20Kotlin.jpg" width="200" height="400" style="padding:20px;"> 
+<img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view1.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view2.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view3.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view4.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/cloud_firestore.png" width="400" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/firebase_storage.png" width="400" height="400" style="padding:20px;"> 
 
 # 
 ### Contacto
