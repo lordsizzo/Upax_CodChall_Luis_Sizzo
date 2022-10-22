@@ -7,7 +7,18 @@ Desafio en el cual creas pantallas con informacion y uso de persistencia de dato
 
 Esta app tiene como objetivo crear multiples funcionalidades. 4 vistas muestran distintos tipo de servicios y usos del usuario, en la primera tenemos un perfil
 que comúnmente el usuario tiene, en la segunda tenemos una lista de peliculas en donde se hace consumo de un API, en la tercera tenemos un mapa en donde busca en 
-Cloud Firestore informacion sobre latitud y longitud, lo muestra y tambien lo guarda, y en la cuarta vista es un sistema para subir imagenes al Firebase Storage.
+Cloud Firestore informacion sobre latitud y longitud, lo muestra y tambien lo guarda, y en la cuarta vista es un sistema para subir imagenes al Firebase Storage. 
+
+Se utilizó:
+* Arquitectura MVVM
+* uso de Coroutines para manejo de hilos y flows 
+* Retrofit para consumo REST 
+* RoomDB para persistencia de datos 
+* Hilt para injección de dependencias 
+* Uso de Android Jetpack como Fragments y AppCompat
+* Solicitud de permisos para Localización
+* BottomSheetDialog custom para notificar la solicitud de permisos
+* Material Design como Cards, TextViews, RecyclerView e ImageView
 
 # 
 ### Languages and Tools used:
@@ -17,7 +28,7 @@ Cloud Firestore informacion sobre latitud y longitud, lo muestra y tambien lo gu
 
 #
 ### Screenshots
-<img src="https://github.com/lordsizzo/Android_GMapsAPIKotlin/blob/master/Screenshot_20220204-160145_Android%20GMapsAPI%20Kotlin.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Android_GMapsAPIKotlin/blob/master/Screenshot_20220204-160153_Android%20GMapsAPI%20Kotlin.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Android_GMapsAPIKotlin/blob/master/Screenshot_20220204-160852_Android%20GMapsAPI%20Kotlin.jpg" width="200" height="400" style="padding:20px;"> 
+<img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view1.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view2.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view3.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/view4.jpg" width="200" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/cloud_firestore.png" width="400" height="400" style="padding:20px;"> <img src="https://github.com/lordsizzo/Upax_CodChall_Luis_Sizzo/blob/main/screenshots/firebase_storage.png" width="400" height="400" style="padding:20px;"> 
 
 # 
 ### Contacto
