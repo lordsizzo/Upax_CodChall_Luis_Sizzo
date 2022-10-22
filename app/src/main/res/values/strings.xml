@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Cine Upax Luis_Sizzo</string>
+    <string name="search_for_user_s_repositories">Search for user\'s Repositories</string>
+    <string name="this_is_their_biography_it_may_be_long_and_needs_to_all_fit">This is their biography. It may be long and needs to all fit</string>
+    <string name="search">Search</string>
+    <string name="search_user">Search user</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="perfil">Perfil</string>
+    <string name="peliculas">Peliculas</string>
+    <string name="cloud">Cloud</string>
+    <string name="foto">Foto</string>
+    <string name="peliculas_populares">Peliculas Populares</string>
+    <string name="peliculas_m_s_calificadas">Peliculas Más Calificadas</string>
+</resources>

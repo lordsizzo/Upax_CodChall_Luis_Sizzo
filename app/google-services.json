@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "134502282062",
+    "project_id": "upax-luis-sizzo-testing",
+    "storage_bucket": "upax-luis-sizzo-testing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134502282062:android:76d210da941b469cd3e41f",
+        "android_client_info": {
+          "package_name": "luis.sizzo.upax_codchall_luis_sizzo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134502282062-2899e7rf0rqrgouc5241g23ik1i8f8nn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkss2Wybb1Novh6kkyuj6HgmAR9bhOy8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134502282062-2899e7rf0rqrgouc5241g23ik1i8f8nn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
