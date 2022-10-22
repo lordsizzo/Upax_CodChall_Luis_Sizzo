@@ -1,25 +1,19 @@
 package luis.sizzo.upax_codchall_luis_sizzo.view.fragments
 
-import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import dagger.hilt.android.AndroidEntryPoint
 import luis.sizzo.upax_codchall_luis_sizzo.common.click
 import luis.sizzo.upax_codchall_luis_sizzo.common.toast
 import luis.sizzo.upax_codchall_luis_sizzo.databinding.FragmentCamaraBinding
-import luis.sizzo.upax_codchall_luis_sizzo.model.LatLngFirebaseModel
 import luis.sizzo.upax_codchall_luis_sizzo.model.UIViewState
 import luis.sizzo.upax_codchall_luis_sizzo.view_model.view_model_fragments.CamaraFragmentViewModel
 
@@ -27,7 +21,6 @@ import luis.sizzo.upax_codchall_luis_sizzo.view_model.view_model_fragments.Camar
 @AndroidEntryPoint
 class CamaraFragment : Fragment() {
 
-    var position = 0
     val GALLERY_REQUEST_CODE = 123
     lateinit var binding: FragmentCamaraBinding
     private val viewModel: CamaraFragmentViewModel by lazy {
@@ -60,7 +53,6 @@ class CamaraFragment : Fragment() {
                 is UIViewState.LOADING -> {
                     binding.btnFotos.isEnabled = false
                     binding.btnSubir.isEnabled = false
-                    Log.d("CamaraFragment", "Cargando")
                     requireActivity().toast("Cargando... espere")
                 }
                 is UIViewState.SUCCESS<*> -> {
@@ -81,14 +73,8 @@ class CamaraFragment : Fragment() {
     }
 
     private fun selectImageFromGallery() {
-
-        // initialising intent
         val intent = Intent()
-
-        // setting type to select to be image
         intent.type = "image/*"
-
-        // allowing multiple image to be selected
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), GALLERY_REQUEST_CODE)
@@ -107,30 +93,19 @@ class CamaraFragment : Fragment() {
             data
         )
         if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK && null != data) {
-        // Get the Uri of data
             mArrayUri.clear()
             val cout = data.clipData!!.itemCount
             binding.container.removeAllViews();
             for (i in 0 until cout) {
-                // adding imageuri in array
                 val imageurl = data.clipData!!.getItemAt(i).uri
-
                 val imageView = ImageView(requireContext())
-                // setting height and width of imageview
                 imageView.layoutParams = LinearLayout.LayoutParams(400, 400)
-                imageView.x = 20F //setting margin from left
-                imageView.y = 20F //setting margin from top
+                imageView.x = 20F
+                imageView.y = 20F
                 imageView.setImageURI(imageurl)
 
                 binding.container.addView(imageView)
-
                 mArrayUri.add(imageurl)
-            }
-            Log.d("onActivityResultCamara", "${mArrayUri}")
-
-            val file_uri = data.data
-            if (file_uri != null) {
-
             }
         }
     }

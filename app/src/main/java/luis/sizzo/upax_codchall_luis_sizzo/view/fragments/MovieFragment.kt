@@ -1,12 +1,8 @@
 package luis.sizzo.upax_codchall_luis_sizzo.view.fragments
 
-import android.content.ContentValues
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,7 +11,6 @@ import luis.sizzo.upax_codchall_luis_sizzo.common.toast
 import luis.sizzo.upax_codchall_luis_sizzo.databinding.FragmentMovieBinding
 import luis.sizzo.upax_codchall_luis_sizzo.model.UIViewState
 import luis.sizzo.upax_codchall_luis_sizzo.model.local.movies_local.MoviesLocalEntity
-import luis.sizzo.upax_codchall_luis_sizzo.model.remote.MoviesObject
 import luis.sizzo.upax_codchall_luis_sizzo.view.adapters.MoviesAdapter
 import luis.sizzo.upax_codchall_luis_sizzo.view_model.view_model_fragments.MovieFragmentViewModel
 
@@ -39,7 +34,6 @@ class MovieFragment : Fragment() {
         viewModel.moviesPopularResponse.observe(viewLifecycleOwner){ popularMovies ->
             when(popularMovies){
                 is UIViewState.LOADING ->{
-                    Log.d("MovieFragment", "Cargando")
                     requireActivity().toast("Cargando... espere")
                 }
                 is UIViewState.SUCCESS<*> ->{
@@ -49,7 +43,7 @@ class MovieFragment : Fragment() {
                             binding.listMoviesRecyclerView.settingsGrid(this)
                         }
 
-                    } ?: showError("Error at casting")
+                    } ?: showError("Error al buscar")
                 }
                 is UIViewState.ERROR ->{
                     requireActivity().toast("${popularMovies.error}")
@@ -61,7 +55,6 @@ class MovieFragment : Fragment() {
         viewModel.moviesTopRatedResponse.observe(viewLifecycleOwner){ popularMovies ->
             when(popularMovies){
                 is UIViewState.LOADING ->{
-                    Log.d("MovieFragment", "Cargando")
                     requireActivity().toast("Cargando... espere")
                 }
                 is UIViewState.SUCCESS<*> ->{
@@ -83,7 +76,7 @@ class MovieFragment : Fragment() {
 
     private fun showError(message: String) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Error occurred")
+            .setTitle("Ocurrio un error")
             .setMessage(message)
             .setNegativeButton("CLOSE") { dialog, _ ->
                 dialog.dismiss()

@@ -57,12 +57,11 @@ class RepositoryImpl @Inject constructor(
                             movieDato.insertAllMoviesInfo(sat)
                         }
                         val cache = movieDato.getAllMoviesInfoBySection(section)
-                        val items: ArrayList<MoviesResults> = ArrayList()
                         Log.d(ContentValues.TAG, "Error getMovies: ${cache}")
                         emit(UIViewState.SUCCESS(cache))
                     } ?: throw Exception("Response null")
                 } else {
-                    throw Exception(response.errorBody().toString())
+                    emit(UIViewState.ERROR(response.errorBody().toString()))
                 }
             } else {
                 val cache = movieDato.getAllMoviesInfoBySection(section)
@@ -80,7 +79,6 @@ class RepositoryImpl @Inject constructor(
 
     override fun insertLatLng(location: LatLng)= flow {
         emit(UIViewState.LOADING)
-
         try {
             if (CheckConnection().isConnected()) {
                 val catchinData = GlobalScope.async {
@@ -92,7 +90,6 @@ class RepositoryImpl @Inject constructor(
             } else {
                 emit(UIViewState.ERROR("No tienes internet"))
             }
-
         }catch (e:Exception) {
             emit(UIViewState.ERROR(e.toString()))
         }
@@ -114,14 +111,13 @@ class RepositoryImpl @Inject constructor(
                 result = "Insertado con exito"
             }
             .addOnFailureListener { exception ->
-                result = "${exception.message.toString()}"
+                result = exception.message.toString()
             }.await()
         return result
     }
 
     override fun returnLatLng()= flow {
         emit(UIViewState.LOADING)
-
         try {
             if (CheckConnection().isConnected()) {
                 Log.d("getReturnLatLng", "llega aqui")
@@ -130,9 +126,6 @@ class RepositoryImpl @Inject constructor(
             } else {
                 emit(UIViewState.ERROR("No tienes internet"))
             }
-
-
-
         }catch (e:Exception) {
             emit(UIViewState.ERROR(e.toString()))
         }
@@ -140,7 +133,6 @@ class RepositoryImpl @Inject constructor(
 
     override fun insertImage(uri: ArrayList<Uri>)= flow {
         emit(UIViewState.LOADING)
-
         try {
             if (CheckConnection().isConnected()) {
                 val catchinData = GlobalScope.async {
@@ -154,7 +146,6 @@ class RepositoryImpl @Inject constructor(
             } else {
                 emit(UIViewState.ERROR("No tienes internet"))
             }
-
         }catch (e:Exception) {
             emit(UIViewState.ERROR(e.toString()))
         }
@@ -162,15 +153,11 @@ class RepositoryImpl @Inject constructor(
 
     private suspend fun getReturnLatLng(): ArrayList<LatLngFirebaseModel>{
         var items: ArrayList<LatLngFirebaseModel> = ArrayList<LatLngFirebaseModel>()
-        Log.d("getReturnLatLng", "Entra aqui")
         val fireStoreDatabase = FirebaseFirestore.getInstance()
         fireStoreDatabase.collection("location")
             .get()
             .addOnSuccessListener { document ->
-                val user = document
-
-                if (user != null) {
-
+                if (document != null) {
                     document.documents.forEach {
                         val model = LatLngFirebaseModel(it.get("date").toString(), it.get("lat").toString(), it.get("lng").toString())
                         items.add(model)

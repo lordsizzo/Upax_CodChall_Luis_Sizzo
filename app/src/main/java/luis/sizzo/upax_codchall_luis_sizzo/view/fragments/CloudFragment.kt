@@ -2,36 +2,24 @@ package luis.sizzo.upax_codchall_luis_sizzo.view.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context.LAYOUT_INFLATER_SERVICE
-import android.location.Address
-import android.location.Geocoder
-import android.os.Build
-import android.os.Bundle
+import android.location.*
+import android.os.*
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Toast
+import android.view.*
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import luis.sizzo.upax_codchall_luis_sizzo.R
 import luis.sizzo.upax_codchall_luis_sizzo.common.*
 import luis.sizzo.upax_codchall_luis_sizzo.databinding.FragmentCloudBinding
 import luis.sizzo.upax_codchall_luis_sizzo.model.LatLngFirebaseModel
 import luis.sizzo.upax_codchall_luis_sizzo.model.UIViewState
-import luis.sizzo.upax_codchall_luis_sizzo.model.remote.MoviesObject
-import luis.sizzo.upax_codchall_luis_sizzo.view.adapters.MoviesAdapter
 import luis.sizzo.upax_codchall_luis_sizzo.view_model.view_model_fragments.CloudFragmentViewModel
-import luis.sizzo.upax_codchall_luis_sizzo.view_model.view_model_fragments.MovieFragmentViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
@@ -124,7 +112,7 @@ class CloudFragment : Fragment(), OnMapReadyCallback {
                 mapa.clear()
 
                 val geocoder =  Geocoder(requireContext(), Locale.getDefault());
-                var addresses: List<Address> =
+                val addresses: List<Address> =
                     geocoder.getFromLocation(loc.latitude, loc.longitude, 1)!!
                 binding.tvStreet.text = "Calle: ${addresses[0].thoroughfare} ${addresses[0].subThoroughfare}"
                 binding.tvCity.text = "Ciudad: ${addresses[0].locality}"
@@ -166,7 +154,7 @@ class CloudFragment : Fragment(), OnMapReadyCallback {
             mapa.clear()
 
             val geocoder =  Geocoder(requireContext(), Locale.getDefault());
-            var addresses: List<Address> =
+            val addresses: List<Address> =
                 geocoder.getFromLocation(location.latitude, location.longitude, 1)!!
             binding.tvStreet.text = "Calle: ${addresses[0].thoroughfare} ${addresses[0].subThoroughfare}"
             binding.tvCity.text = "Ciudad: ${addresses[0].locality}"
@@ -199,7 +187,6 @@ class CloudFragment : Fragment(), OnMapReadyCallback {
 
         }catch (e: Exception){
             requireContext().toast(e.toString())
-            //Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -221,8 +208,6 @@ class CloudFragment : Fragment(), OnMapReadyCallback {
             .tilt(CAMERA_TILT)            // Sets the tilt of the camera to 30 degrees
             .build()
         mapa.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
-
-        Log.d("addMarkers", "$loc")
     }
 
 }
