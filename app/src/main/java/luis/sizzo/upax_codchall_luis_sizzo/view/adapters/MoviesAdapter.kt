@@ -10,9 +10,9 @@ import luis.sizzo.upax_codchall_luis_sizzo.R
 import luis.sizzo.upax_codchall_luis_sizzo.common.URL_IMAGE
 import luis.sizzo.upax_codchall_luis_sizzo.common.toast
 import luis.sizzo.upax_codchall_luis_sizzo.databinding.ItemsMoviesBinding
-import luis.sizzo.upax_codchall_luis_sizzo.model.remote.MoviesResults
+import luis.sizzo.upax_codchall_luis_sizzo.model.local.movies_local.MoviesLocalEntity
 
-class MoviesAdapter(private val items: List<MoviesResults>) :
+class MoviesAdapter(private val items: List<MoviesLocalEntity>) :
     RecyclerView.Adapter<MoviesAdapter.CategoriesViewHolder>() {
 
     class CategoriesViewHolder(val binding: ItemsMoviesBinding) : RecyclerView.ViewHolder(binding.root)
@@ -31,17 +31,6 @@ class MoviesAdapter(private val items: List<MoviesResults>) :
             holder.binding.title.text = items[position].title
             holder.binding.image.load("${URL_IMAGE}${items[position].poster_path}")
             holder.binding.date.text = items[position].release_date
-
-
-//            holder.binding.forks.text = "${items[position].forks} Forks"
-//            holder.binding.stars.text = "${items[position].stargazers_count} Stars"
-//            holder.binding.lyForksStars.setBackgroundColor(getRandomColor(holder.binding.root.context));
-//
-//            holder.binding.root.click {
-//                val openURLRepo = Intent(Intent.ACTION_VIEW)
-//                openURLRepo.data = Uri.parse(items[position].html_url)
-//                holder.binding.root.context.startActivity(openURLRepo)
-//            }
 
         } catch (e: Exception) {
 

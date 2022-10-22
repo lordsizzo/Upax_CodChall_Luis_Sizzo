@@ -18,6 +18,7 @@ import luis.sizzo.upax_codchall_luis_sizzo.model.LatLngFirebaseModel
 import luis.sizzo.upax_codchall_luis_sizzo.model.UIViewState
 import luis.sizzo.upax_codchall_luis_sizzo.model.local.Movies_Dao
 import luis.sizzo.upax_codchall_luis_sizzo.model.local.movies_local.MoviesLocalEntity
+import luis.sizzo.upax_codchall_luis_sizzo.model.remote.MoviesResults
 import luis.sizzo.upax_codchall_luis_sizzo.model.remote.RemoteAPIConnection
 import java.text.SimpleDateFormat
 import java.util.*
@@ -56,6 +57,8 @@ class RepositoryImpl @Inject constructor(
                             movieDato.insertAllMoviesInfo(sat)
                         }
                         val cache = movieDato.getAllMoviesInfoBySection(section)
+                        val items: ArrayList<MoviesResults> = ArrayList()
+                        Log.d(ContentValues.TAG, "Error getMovies: ${cache}")
                         emit(UIViewState.SUCCESS(cache))
                     } ?: throw Exception("Response null")
                 } else {

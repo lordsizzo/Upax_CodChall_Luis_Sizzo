@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -57,35 +58,29 @@ class CamaraFragment : Fragment() {
         viewModel.insertImageToFirebase.observe(viewLifecycleOwner) { latLngResponse ->
             when (latLngResponse) {
                 is UIViewState.LOADING -> {
+                    binding.btnFotos.isEnabled = false
+                    binding.btnSubir.isEnabled = false
                     Log.d("CamaraFragment", "Cargando")
                     requireActivity().toast("Cargando... espere")
                 }
                 is UIViewState.SUCCESS<*> -> {
 
                     Log.d("CamaraFragment", "${latLngResponse.response}")
-                    requireActivity().toast("Esta es la respuesta: ${latLngResponse.response}")
+                    binding.container.removeAllViews()
+                    binding.btnFotos.isEnabled = true
+                    binding.btnSubir.isEnabled = true
 
                 }
                 is UIViewState.ERROR -> {
                     requireActivity().toast("${latLngResponse.error}")
+                    binding.btnFotos.isEnabled = true
+                    binding.btnSubir.isEnabled = true
                 }
             }
         }
     }
 
     private fun selectImageFromGallery() {
-
-//        val intent = Intent()
-//        intent.type = "image/*"
-//        intent.action = Intent.ACTION_GET_CONTENT
-//
-//        startActivityForResult(
-//            Intent.createChooser(
-//                intent,
-//                "Please select..."
-//            ),
-//            GALLERY_REQUEST_CODE
-//        )
 
         // initialising intent
         val intent = Intent()
@@ -111,40 +106,24 @@ class CamaraFragment : Fragment() {
             resultCode,
             data
         )
-
-        // When an Image is picked
-//        if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK && null != data) {
-//            // Get the Image from data
-//            if (data.clipData != null) {
-//                val mClipData = data.clipData
-//                val cout = data.clipData!!.itemCount
-//                for (i in 0 until cout) {
-//                    // adding imageuri in array
-//                    val imageurl = data.clipData!!.getItemAt(i).uri
-//                    mArrayUri?.add(imageurl)
-//                }
-//                // setting 1st selected image into image switcher
-//                binding.image.setImageURI(mArrayUri?.get(0))
-//                position = 0
-//            } else {
-//                val imageurl = data.data
-//                if (imageurl != null) {
-//                    mArrayUri?.add(imageurl)
-//                }
-//                binding.image.setImageURI(mArrayUri?.get(0))
-//                position = 0
-//            }
-//        } else {
-//            // show this if no image is selected
-//            Toast.makeText(requireContext(), "You haven't picked Image", Toast.LENGTH_LONG).show()
-//        }
         if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK && null != data) {
         // Get the Uri of data
             mArrayUri.clear()
             val cout = data.clipData!!.itemCount
+            binding.container.removeAllViews();
             for (i in 0 until cout) {
                 // adding imageuri in array
                 val imageurl = data.clipData!!.getItemAt(i).uri
+
+                val imageView = ImageView(requireContext())
+                // setting height and width of imageview
+                imageView.layoutParams = LinearLayout.LayoutParams(400, 400)
+                imageView.x = 20F //setting margin from left
+                imageView.y = 20F //setting margin from top
+                imageView.setImageURI(imageurl)
+
+                binding.container.addView(imageView)
+
                 mArrayUri.add(imageurl)
             }
             Log.d("onActivityResultCamara", "${mArrayUri}")

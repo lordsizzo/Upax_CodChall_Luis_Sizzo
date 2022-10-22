@@ -1,5 +1,6 @@
 package luis.sizzo.upax_codchall_luis_sizzo.view.fragments
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import luis.sizzo.upax_codchall_luis_sizzo.common.settingsGrid
 import luis.sizzo.upax_codchall_luis_sizzo.common.toast
 import luis.sizzo.upax_codchall_luis_sizzo.databinding.FragmentMovieBinding
 import luis.sizzo.upax_codchall_luis_sizzo.model.UIViewState
+import luis.sizzo.upax_codchall_luis_sizzo.model.local.movies_local.MoviesLocalEntity
 import luis.sizzo.upax_codchall_luis_sizzo.model.remote.MoviesObject
 import luis.sizzo.upax_codchall_luis_sizzo.view.adapters.MoviesAdapter
 import luis.sizzo.upax_codchall_luis_sizzo.view_model.view_model_fragments.MovieFragmentViewModel
@@ -42,9 +43,9 @@ class MovieFragment : Fragment() {
                     requireActivity().toast("Cargando... espere")
                 }
                 is UIViewState.SUCCESS<*> ->{
-                    val categories = popularMovies.response as? MoviesObject
+                    val categories = popularMovies.response as? List<MoviesLocalEntity>
                     categories?.let { moviesObject ->
-                        MoviesAdapter(moviesObject.results).apply {
+                        MoviesAdapter(moviesObject).apply {
                             binding.listMoviesRecyclerView.settingsGrid(this)
                         }
 
@@ -64,9 +65,9 @@ class MovieFragment : Fragment() {
                     requireActivity().toast("Cargando... espere")
                 }
                 is UIViewState.SUCCESS<*> ->{
-                    val categories = popularMovies.response as? MoviesObject
+                    val categories = popularMovies.response as? List<MoviesLocalEntity>
                     categories?.let { moviesObject ->
-                        MoviesAdapter(moviesObject.results).apply {
+                        MoviesAdapter(moviesObject).apply {
                             binding.listMoviesMasCalificadasRecyclerView.settingsGrid(this)
                         }
 
