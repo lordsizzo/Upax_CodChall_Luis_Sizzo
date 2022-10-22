@@ -27,8 +27,3 @@ Cloud Firestore informacion sobre latitud y longitud, lo muestra y tambien lo gu
 <img src="https://toppng.com/public/uploads/thumbnail/subscribe-to-our-mailing-list-icono-de-instagram-en-blanco-11562863465psekvjyxmv.png" width="20" height="20"  title="Instragram"> [@lou_sizzo](http://instagram.com/lou_sizzo "@lou_sizzo")
 
 <img src="https://www.pikpng.com/pngl/b/31-313145_twitter-png-white-white-twitter-logo-no-background.png" width="20" height="20"  title="Twitter"> [@lord_sizzo](https://twitter.com/lord_sizzo "@lord_sizzo")
-
-![](https://visitor-badge.laobi.icu/badge?page_id=lordsizzo.Android_GMapsAPIKotlin)
-[![Github](https://img.shields.io/github/followers/lordsizzo?label=Follow&style=social)](https://github.com/lordsizzo)
-
-
