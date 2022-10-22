@@ -7,7 +7,18 @@ Desafio en el cual creas pantallas con informacion y uso de persistencia de dato
 
 Esta app tiene como objetivo crear multiples funcionalidades. 4 vistas muestran distintos tipo de servicios y usos del usuario, en la primera tenemos un perfil
 que comúnmente el usuario tiene, en la segunda tenemos una lista de peliculas en donde se hace consumo de un API, en la tercera tenemos un mapa en donde busca en 
-Cloud Firestore informacion sobre latitud y longitud, lo muestra y tambien lo guarda, y en la cuarta vista es un sistema para subir imagenes al Firebase Storage.
+Cloud Firestore informacion sobre latitud y longitud, lo muestra y tambien lo guarda, y en la cuarta vista es un sistema para subir imagenes al Firebase Storage. 
+
+Se utilizó:
+* Arquitectura MVVM
+* uso de Coroutines para manejo de hilos y flows 
+* Retrofit para consumo REST 
+* RoomDB para persistencia de datos 
+* Hilt para injección de dependencias 
+* Uso de Android Jetpack como Fragments y AppCompat
+* Solicitud de permisos para Localización
+* BottomSheetDialog custom para notificar la solicitud de permisos
+* Material Design como Cards, TextViews, RecyclerView e ImageView
 
 # 
 ### Languages and Tools used:
