@@ -62,7 +62,7 @@ class MainViewActivity : AppCompatActivity() {
 
 
 
-//        startService(Intent(this@MainViewActivity, MyLatLngService::class.java))
+        startService(Intent(this@MainViewActivity, MyLatLngService::class.java))
 
 //        binding.btnSearch.click {
 //            if(binding.searchUser.text.toString().isNotEmpty()){

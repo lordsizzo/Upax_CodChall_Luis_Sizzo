@@ -104,14 +104,9 @@ class MyLatLngService : Service() {
             .add(items)
             .addOnSuccessListener {
                 result = "Insertado con exito"
-//                createNotification(
-//                    this,
-//                    "Aviso de Localizacion",
-//                    "Localizacion guardada",
-//                )
             }
             .addOnFailureListener { exception ->
-                result = "${exception.message.toString()}"
+                result = exception.message.toString()
             }.await()
 
         Log.d("", "Este es el result ${result}")
